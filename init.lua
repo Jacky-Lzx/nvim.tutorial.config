@@ -16,5 +16,6 @@ vim.opt.smartindent = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+require("lua.keymapping")
 
 require("config.lazy") -- Import `./lua/config/lazy.lua`
