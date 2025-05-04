@@ -71,6 +71,10 @@ return {
             return { "copilot", "lsp", "path", "snippets", "buffer" }
           end
         end,
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
+
         providers = {
           copilot = {
             name = "copilot",
