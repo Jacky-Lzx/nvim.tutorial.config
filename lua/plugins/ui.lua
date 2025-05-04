@@ -192,5 +192,13 @@ return {
         { filter = { event = "msg_show", kind = "", }, opts = { skip = true }, },
       },
     }
-  }
+  },
+
+  {
+    "echasnovski/mini.diff",
+    event = "VeryLazy",
+    version = "*",
+    opts = {},
+  },
+
 }
