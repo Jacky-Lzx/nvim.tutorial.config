@@ -6,6 +6,7 @@ return {
       -- 'rafamadriz/friendly-snippets'
       "nvim-tree/nvim-web-devicons",
       "onsails/lspkind.nvim",
+      "fang2hou/blink-copilot"
     },
 
     -- use a release tag to download pre-built binaries
@@ -67,10 +68,16 @@ return {
           if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
             return { "buffer" }
           else
-            return { "lsp", "path", "snippets", "buffer" }
+            return { "copilot", "lsp", "path", "snippets", "buffer" }
           end
         end,
         providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
           path = {
             score_offset = 95,
             opts = {
