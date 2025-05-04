@@ -34,4 +34,4 @@ vim.g.maplocalleader = "\\"
 
 require("config.lazy") -- Import `./lua/config/lazy.lua`
 
-require("lua.keymapping")
+require("keymapping")
