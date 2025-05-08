@@ -91,12 +91,28 @@ return {
       },
 
       statuscolumn = { enabled = true },
+      terminal = {
+        enabled = true,
+      },
       words = { enabled = true },
+
+      styles = {
+        terminal = {
+          relative = "editor",
+          border = "rounded",
+          position = "float",
+          backdrop = 60,
+          height = 0.9,
+          width = 0.9,
+          zindex = 50,
+        },
+      },
     },
 
     keys = {
       { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
       { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display image" },
+      { "<A-i>", function() require("snacks").terminal() end, desc = "[Snacks] Toggle terminal", mode = {"n",  "t"} },
       -- Notification
       { "<leader>sn", function() require("snacks").picker.notifications() end, desc = "[Snacks] Notification history" },
       { "<leader>n", function() require("snacks").notifier.show_history() end, desc = "[Snacks] Notification history" },
