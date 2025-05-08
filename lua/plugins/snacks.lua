@@ -35,14 +35,54 @@ return {
         },
       },
       input = { enabled = true },
-
       lazygit = {
         enabled = true,
         configure = false,
       },
+      notifier = {
+        enabled = true,
+        style = "notification",
+      },
+      picker = {
+        enabled = true,
+        previewers = {
+          diff = {
+            builtin = false, -- use Neovim for previewing diffs (true) or use an external tool (false)
+            cmd = { "delta" }, -- example to show a diff with delta
+          },
+          git = {
+            builtin = false, -- use Neovim for previewing git output (true) or use git (false)
+            args = {}, -- additional arguments passed to the git command. Useful to set pager options using `-c ...`
+          },
+        },
+        sources = {
+          spelling = {
+            layout = { preset = "select" }
+          },
+        },
+        win = {
+          input = {
+            keys = {
+              ["<Tab>"] = { "select_and_prev", mode = { "i", "n" } },
+              ["<S-Tab>"] = { "select_and_next", mode = { "i", "n" } },
+              ["<A-Up>"] = { "history_back", mode = { "n", "i" } },
+              ["<A-Down>"] = { "history_forward", mode = { "n", "i" } },
+              ["<A-j>"] = { "list_down", mode = { "n", "i" } },
+              ["<A-k>"] = { "list_up", mode = { "n", "i" } },
+              ["<C-u>"] = { "preview_scroll_up", mode = { "n", "i" } },
+              ["<C-d>"] = { "preview_scroll_down", mode = { "n", "i" } },
+              ["<A-u>"] = { "list_scroll_up", mode = { "n", "i" } },
+              ["<A-d>"] = { "list_scroll_down", mode = { "n", "i" } },
+              ["<c-j>"] = {},
+              ["<c-k>"] = {},
+            },
+          },
+        },
+        layout = {
+          preset = "telescope",
+        },
+      },
 
-      picker = { enabled = true },
-      notifier = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = true },
@@ -52,10 +92,60 @@ return {
 
     keys = {
       { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
-      { "<leader>sgb", function() require("snacks").git.blame_line() end, desc = "[Snacks] Git blame line" },
-      { "<leader>sgB", function() require("snacks").gitbrowse() end, desc = "[Snacks] Git browse" },
-      { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display Image" },
+      { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display image" },
+      -- Notification
+      { "<leader>sn", function() require("snacks").picker.notifications() end, desc = "[Snacks] Notification history" },
+      { "<leader>n", function() require("snacks").notifier.show_history() end, desc = "[Snacks] Notification history" },
+      { "<leader>un", function() require("snacks").notifier.hide() end, desc = "[Snacks] Dismiss all notifications" },
+      -- Top Pickers & Explorer
+      { "<leader><space>", function() require("snacks").picker.smart() end, desc = "[Snacks] Smart find files" },
+      { "<leader>,", function() require("snacks").picker.buffers() end, desc = "[Snacks] Buffers" },
+      { "<leader>sn", function() require("snacks").picker.notifications() end, desc = "[Snacks] Notification history" },
+      -- find
+      { "<leader>sb", function() require("snacks").picker.buffers() end, desc = "[Snacks] Buffers" },
+      { "<leader>sf", function() require("snacks").picker.files() end, desc = "[Snacks] Find files" },
+      { "<leader>sp", function() require("snacks").picker.projects() end, desc = "[Snacks] Projects" },
+      { "<leader>sr", function() require("snacks").picker.recent() end, desc = "[Snacks] Recent" },
+      -- git
       { "<C-g>", function() require("snacks").lazygit() end, desc = "[Snacks] Lazygit" },
+      { "<leader>gl", function() require("snacks").picker.git_log() end, desc = "[Snacks] Git log" },
+      { "<leader>gd", function() require("snacks").picker.git_diff() end, desc = "[Snacks] Git diff" },
+      { "<leader>gb", function() require("snacks").git.blame_line() end, desc = "[Snacks] Git blame line" },
+      { "<leader>gB", function() require("snacks").gitbrowse() end, desc = "[Snacks] Git browse" },
+      -- Grep
+      -- { "<leader>sb", function() require("snacks").picker.lines() end, desc = "[Snacks] Buffer lines" },
+      -- { "<leader>sB", function() require("snacks").picker.grep_buffers() end, desc = "[Snacks] Grep open buffers" },
+      { "<leader>sg", function() require("snacks").picker.grep() end, desc = "[Snacks] Grep" },
+      -- { "<leader>sw", function() require("snacks").picker.grep_word() end, desc = "[Snacks] Visual selection or word", mode = { "n", "x" } },
+      -- search
+      { '<leader>s"', function() require("snacks").picker.registers() end, desc = "[Snacks] Registers" },
+      { '<leader>s/', function() require("snacks").picker.search_history() end, desc = "[Snacks] Search history" },
+      { "<leader>sa", function() require("snacks").picker.spelling() end, desc = "[Snacks] Spelling" },
+      { "<leader>sA", function() require("snacks").picker.autocmds() end, desc = "[Snacks] Autocmds" },
+      { "<leader>s:", function() require("snacks").picker.command_history() end, desc = "[Snacks] Command history" },
+      { "<leader>sc", function() require("snacks").picker.commands() end, desc = "[Snacks] Commands" },
+      { "<leader>sd", function() require("snacks").picker.diagnostics() end, desc = "[Snacks] Diagnostics" },
+      { "<leader>sD", function() require("snacks").picker.diagnostics_buffer() end, desc = "[Snacks] Diagnostics buffer" },
+      { "<leader>sH", function() require("snacks").picker.help() end, desc = "[Snacks] Help pages" },
+      { "<leader>sh", function() require("snacks").picker.highlights() end, desc = "[Snacks] Highlights" },
+      { "<leader>sI", function() require("snacks").picker.icons() end, desc = "[Snacks] Icons" },
+      { "<leader>sj", function() require("snacks").picker.jumps() end, desc = "[Snacks] Jumps" },
+      { "<leader>sk", function() require("snacks").picker.keymaps() end, desc = "[Snacks] Keymaps" },
+      { "<leader>sl", function() require("snacks").picker.loclist() end, desc = "[Snacks] Location list" },
+      { "<leader>sm", function() require("snacks").picker.marks() end, desc = "[Snacks] Marks" },
+      { "<leader>sM", function() require("snacks").picker.man() end, desc = "[Snacks] Man pages" },
+      { "<leader>sp", function() require("snacks").picker.lazy() end, desc = "[Snacks] Search for plugin spec" },
+      { "<leader>sq", function() require("snacks").picker.qflist() end, desc = "[Snacks] Quickfix list" },
+      { "<leader>sr", function() require("snacks").picker.resume() end, desc = "[Snacks] Resume" },
+      { "<leader>su", function() require("snacks").picker.undo() end, desc = "[Snacks] Undo history" },
+      -- LSP
+      { "gd", function() require("snacks").picker.lsp_definitions() end, desc = "[Snacks] Goto definition" },
+      { "gD", function() require("snacks").picker.lsp_declarations() end, desc = "[Snacks] Goto declaration" },
+      { "gr", function() require("snacks").picker.lsp_references() end, desc = "[Snacks] References" },
+      { "gI", function() require("snacks").picker.lsp_implementations() end, desc = "[Snacks] Goto implementation" },
+      { "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "[Snacks] Goto t[y]pe definition" },
+      { "<leader>ss", function() require("snacks").picker.lsp_symbols() end, desc = "[Snacks] LSP symbols" },
+      { "<leader>sS", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "[Snacks] LSP workspace symbols" },
     },
 
     init = function()
@@ -98,6 +188,12 @@ return {
             Snacks.toggle.inlay_hints():map("<leader>th")
             Snacks.toggle.indent():map("<leader>tg")
             Snacks.toggle.dim():map("<leader>tD")
+
+            vim.keymap.del("n", "grn")
+            vim.keymap.del("n", "gra")
+            vim.keymap.del("n", "grr")
+            vim.keymap.del("n", "gri")
+
           end,
         })
       end,
