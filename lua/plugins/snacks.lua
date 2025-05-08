@@ -82,10 +82,14 @@ return {
           preset = "telescope",
         },
       },
-
       quickfile = { enabled = true },
-      scope = { enabled = true },
       scroll = { enabled = true },
+      -- Create keymappings of `ii` and `ai` for textobjects, and `[i` and `]i` for jumps
+      scope = {
+        enabled = true,
+        cursor = false,
+      },
+
       statuscolumn = { enabled = true },
       words = { enabled = true },
     },
