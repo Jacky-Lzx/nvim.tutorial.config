@@ -34,8 +34,13 @@ return {
           enabled = true,
         },
       },
-
       input = { enabled = true },
+
+      lazygit = {
+        enabled = true,
+        configure = false,
+      },
+
       picker = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -50,6 +55,7 @@ return {
       { "<leader>sgb", function() require("snacks").git.blame_line() end, desc = "[Snacks] Git blame line" },
       { "<leader>sgB", function() require("snacks").gitbrowse() end, desc = "[Snacks] Git browse" },
       { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display Image" },
+      { "<C-g>", function() require("snacks").lazygit() end, desc = "[Snacks] Lazygit" },
     },
 
     init = function()
