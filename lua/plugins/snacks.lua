@@ -95,7 +95,6 @@ return {
         enabled = true,
       },
       words = { enabled = true },
-
       styles = {
         terminal = {
           relative = "editor",
@@ -166,6 +165,9 @@ return {
       { "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "[Snacks] Goto t[y]pe definition" },
       { "<leader>ss", function() require("snacks").picker.lsp_symbols() end, desc = "[Snacks] LSP symbols" },
       { "<leader>sS", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "[Snacks] LSP workspace symbols" },
+      -- Zen mode
+      { "<leader>z", function() require("snacks").zen() end, desc = "[Snacks] Toggle Zen Mode" },
+      { "<leader>Z", function() require("snacks").zen.zoom() end, desc = "[Snacks] Toggle Zoom" },
     },
 
     init = function()
