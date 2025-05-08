@@ -25,3 +25,11 @@
 ### Chapter 3
 
 - `NodeJS` v20或更高版本
+
+### Chapter 4
+
+- `imagemagick`
+- `tectonic`
+- `ripgrep`
+- `lazygit`
+- `git-delta`
