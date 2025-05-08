@@ -25,6 +25,8 @@ return {
 
     keys = {
       { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
+      { "<leader>sgb", function() require("snacks").git.blame_line() end, desc = "[Snacks] Git blame line" },
+      { "<leader>sgB", function() require("snacks").gitbrowse() end, desc = "[Snacks] Git browse" },
     },
 
     init = function()
