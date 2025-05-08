@@ -12,6 +12,12 @@ return {
       bigfile = { enabled = true },
       dashboard = { enabled = true },
       explorer = { enabled = false },
+      image = {
+        enabled = true,
+        doc = { inline = false, float = false, max_width = 80, max_height = 40 },
+        math = { latex = { font_size = "small" } },
+      },
+
       indent = { enabled = true },
       input = { enabled = true },
       picker = { enabled = true },
@@ -27,6 +33,7 @@ return {
       { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
       { "<leader>sgb", function() require("snacks").git.blame_line() end, desc = "[Snacks] Git blame line" },
       { "<leader>sgB", function() require("snacks").gitbrowse() end, desc = "[Snacks] Git browse" },
+      { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display Image" },
     },
 
     init = function()
