@@ -50,6 +50,8 @@ return {
             }):map("<leader>ta")
 
             -- Create some toggle mappings
+            Snacks.toggle.dim():map("<leader>tD")
+
             Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>ts")
             Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>tw")
             Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>tL")
