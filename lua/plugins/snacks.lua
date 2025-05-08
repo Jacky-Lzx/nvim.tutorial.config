@@ -83,7 +83,7 @@ return {
         },
       },
       quickfile = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       -- Create keymappings of `ii` and `ai` for textobjects, and `[i` and `]i` for jumps
       scope = {
         enabled = true,
@@ -187,7 +187,6 @@ return {
             end
             vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-            vim.g.snacks_animate = false
             Snacks.toggle.new({
               id = "Animation",
               name = "Animation",
@@ -198,6 +197,21 @@ return {
                 vim.g.snacks_animate = state
               end
             }):map("<leader>ta")
+
+            Snacks.toggle.new({
+              id = "scroll_anima",
+              name = "Scroll animation",
+              get = function()
+                return Snacks.scroll.enabled
+              end,
+              set = function(state)
+                if state then
+                  Snacks.scroll.enable()
+                else
+                  Snacks.scroll.disable()
+                end
+              end,
+            }):map("<leader>tS")
 
             -- Create some toggle mappings
             Snacks.toggle.dim():map("<leader>tD")
