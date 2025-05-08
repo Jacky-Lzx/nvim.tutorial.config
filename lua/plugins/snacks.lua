@@ -23,6 +23,10 @@ return {
       words = { enabled = true },
     },
 
+    keys = {
+      { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
+    },
+
     init = function()
         local Snacks = require("snacks")
         vim.api.nvim_create_autocmd("User", {
