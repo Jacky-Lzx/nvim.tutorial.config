@@ -17,8 +17,24 @@ return {
         doc = { inline = false, float = false, max_width = 80, max_height = 40 },
         math = { latex = { font_size = "small" } },
       },
+      indent = {
+        enabled = true,
+        animate = {
+          enabled = false
+        },
+        indent = {
+          only_scope = true
+        },
+        scope = {
+          enabled = true, -- enable highlighting the current scope
+          underline = true, -- underline the start of the scope
+        },
+        chunk = {
+          -- when enabled, scopes will be rendered as chunks, except for the top-level scope which will be rendered as a scope.
+          enabled = true,
+        },
+      },
 
-      indent = { enabled = true },
       input = { enabled = true },
       picker = { enabled = true },
       notifier = { enabled = true },
