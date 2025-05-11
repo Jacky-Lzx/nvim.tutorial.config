@@ -21,7 +21,6 @@ return {
         gitsigns = true,
         mason = true,
         noice = true,
-        notify = true,
         nvimtree = true,
         rainbow_delimiters = true,
         snacks = {
