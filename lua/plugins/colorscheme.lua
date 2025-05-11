@@ -24,6 +24,10 @@ return {
         notify = true,
         nvimtree = true,
         rainbow_delimiters = true,
+        snacks = {
+          enabled = true,
+          indent_scope_color = "flamingo", -- catppuccin color (eg. `lavender`) Default: text
+        }
       }
     },
     config = function(_, opts)
