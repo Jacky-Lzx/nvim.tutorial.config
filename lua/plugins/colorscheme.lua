@@ -27,7 +27,8 @@ return {
         snacks = {
           enabled = true,
           indent_scope_color = "flamingo", -- catppuccin color (eg. `lavender`) Default: text
-        }
+        },
+        which_key = true,
       }
     },
     config = function(_, opts)
