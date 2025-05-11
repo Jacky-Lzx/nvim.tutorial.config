@@ -11,7 +11,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 10
 vim.opt.startofline = false
 
