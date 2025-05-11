@@ -12,8 +12,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 vim.keymap.set({ "n", "x" }, "<S-H>", "^", { desc = "Start of line" })
 vim.keymap.set({ "n", "x" }, "<S-L>", "$", { desc = "End of line" })
-vim.keymap.set("n", "y<S-H>", "y^", { desc = "Yank from start of line" })
-vim.keymap.set("n", "y<S-L>", "y$", { desc = "Yank to end of line" })
+vim.keymap.set("o", "<S-H>", "^", { desc = "Start of line" })
+vim.keymap.set("o", "<S-L>", "$", { desc = "End of line" })
 
 vim.keymap.set({ "n", "x" }, "Q", "<CMD>:qa<CR>")
 vim.keymap.set({ "n", "x" }, "qq", "<CMD>:q<CR>")
