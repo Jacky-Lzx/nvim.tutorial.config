@@ -6,4 +6,11 @@ return {
       ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
     },
   },
+
+  {
+    "cappyzawa/trim.nvim",
+    event = "BufWritePre",
+    opts = {},
+  },
+
 }
