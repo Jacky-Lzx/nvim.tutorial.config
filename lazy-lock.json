@@ -25,5 +25,6 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "55ad4fb76ab68460f700599b7449385f0c4e858e" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "trim.nvim": { "branch": "master", "commit": "d0760a840ca2fe4958353dee567a90c2994e70a7" },
+  "undotree": { "branch": "master", "commit": "b951b87b46c34356d44aa71886aecf9dd7f5788a" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
