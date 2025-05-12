@@ -28,6 +28,7 @@ return {
           indent_scope_color = "flamingo", -- catppuccin color (eg. `lavender`) Default: text
         },
         which_key = true,
+        flash = true,
       }
     },
     config = function(_, opts)
