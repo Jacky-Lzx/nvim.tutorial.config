@@ -135,5 +135,15 @@ return {
     config = true,
   },
 
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    event = "BufReadPost",
+    config = true,
+    keys = {
+      -- Disable the vanilla `s` keybinding
+      { "s", "<NOP>", mode = { "n", "x", "o" } },
+    },
+  },
 
 }
