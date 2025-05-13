@@ -146,4 +146,12 @@ return {
     },
   },
 
+  {
+    -- Extend `a`/`i` textobjects
+    "echasnovski/mini.ai",
+    version = "*",
+    event = "BufReadPost",
+    config = true,
+  },
+
 }
