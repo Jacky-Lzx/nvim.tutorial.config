@@ -160,7 +160,7 @@ return {
       -- {"rcarriga/nvim-notify", opts = {background_colour = "#000000"}}
     },
     keys = {
-      { "<leader>sN", "<CMD>Noice pick<CR>", desc = "[Noice] Pick history messages" }, -- FIXME: Currently unusable
+      { "<leader>sN", "<CMD>Noice pick<CR>", desc = "[Noice] Pick history messages" },
       { "<leader>N", "<CMD>Noice<CR>", desc = "[Noice] Show history messages" },
     },
 
