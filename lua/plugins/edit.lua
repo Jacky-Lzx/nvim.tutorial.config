@@ -7,11 +7,11 @@ return {
     },
   },
 
-  {
-    "cappyzawa/trim.nvim",
-    event = "BufWritePre",
-    opts = {},
-  },
+  -- {
+  --   "cappyzawa/trim.nvim",
+  --   event = "BufWritePre",
+  --   opts = {},
+  -- },
 
   {
     "mbbill/undotree",
