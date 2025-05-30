@@ -122,7 +122,7 @@ return {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "folke/snacks.nvim"
+      "folke/snacks.nvim",
     },
     event = "VeryLazy",
     -- stylua: ignore
@@ -160,8 +160,22 @@ return {
     event = "BufReadPost",
     keys = {
       -- Append/insert for each line of visual selections. Similar to block selection insertion.
-      {"mI", function() require("multicursor-nvim").insertVisual() end, mode = "x", desc = "Insert cursors at visual selection"},
-      {"mA", function() require("multicursor-nvim").appendVisual() end, mode = "x", desc = "Append cursors at visual selection"},
+      {
+        "mI",
+        function()
+          require("multicursor-nvim").insertVisual()
+        end,
+        mode = "x",
+        desc = "Insert cursors at visual selection",
+      },
+      {
+        "mA",
+        function()
+          require("multicursor-nvim").appendVisual()
+        end,
+        mode = "x",
+        desc = "Append cursors at visual selection",
+      },
     },
     config = function()
       local mc = require("multicursor-nvim")
@@ -174,7 +188,6 @@ return {
           mc.clearCursors()
         end)
       end)
-
     end,
   },
 

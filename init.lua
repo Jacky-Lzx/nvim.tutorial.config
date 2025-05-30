@@ -2,7 +2,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.number=true
+vim.opt.number = true
 vim.wo.cursorline = true
 -- Display tabs and trailing spaces
 vim.opt.list = true

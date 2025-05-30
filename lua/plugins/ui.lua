@@ -13,10 +13,10 @@ return {
   },
 
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     dependencies = {
-       'nvim-tree/nvim-web-devicons',
-       "AndreM222/copilot-lualine" ,
+      "nvim-tree/nvim-web-devicons",
+      "AndreM222/copilot-lualine",
     },
     opts = {
       options = {
@@ -33,20 +33,16 @@ return {
         lualine_y = { "encoding", "fileformat", "filetype", "progress" },
         lualine_z = { "location" },
       },
+      -- stylua: ignore
       winbar = {
-        lualine_a = {
-          "filename"
-        },
-        lualine_b = {
-          { function() return " " end, color = 'Comment'},
-        },
-        lualine_x = {
-          "lsp_status"
-        }
+        lualine_a = { "filename", },
+        lualine_b = { { function() return " " end, color = "Comment", }, },
+        lualine_x = { "lsp_status", },
       },
       inactive_winbar = {
         -- Always show winbar
-        lualine_b = { function() return " " end },
+        -- stylua: ignore
+        lualine_b = { function() return " " end, },
       },
     },
     config = function(_, opts)
@@ -89,18 +85,21 @@ return {
       table.insert(opts.sections.lualine_c, copilot)
 
       require("lualine").setup(opts)
-    end
+    end,
   },
 
   {
-    'romgrk/barbar.nvim',
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+    "romgrk/barbar.nvim",
+    version = "^1.0.0", -- optional: only update when a new 1.x version is released
     dependencies = {
-      'lewis6991/gitsigns.nvim',
-      'nvim-tree/nvim-web-devicons',
+      "lewis6991/gitsigns.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
-    init = function() vim.g.barbar_auto_setup = false end,
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
     lazy = false,
+    -- stylua: ignore
     keys = {
       { "<A-<>", "<CMD>BufferMovePrevious<CR>", mode = {"n"}, desc = "[Buffer] Move buffer left"  },
       { "<A->>", "<CMD>BufferMoveNext<CR>",     mode = {"n"}, desc = "[Buffer] Move buffer right" },
@@ -136,16 +135,16 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>e", "<CMD>NvimTreeToggle<CR>", mode = {"n"}, desc = "[NvimTree] Toggle NvimTree" },
+      { "<leader>e", "<CMD>NvimTreeToggle<CR>", mode = { "n" }, desc = "[NvimTree] Toggle NvimTree" },
     },
-    opts = {}
+    opts = {},
   },
 
   {
     "HiPhish/rainbow-delimiters.nvim",
     main = "rainbow-delimiters.setup",
     submodules = false,
-    opts = {}
+    opts = {},
   },
 
   {
@@ -188,11 +187,11 @@ return {
       },
       routes = {
         -- Hide search count
-        { filter = { event = "msg_show", kind = "search_count", }, opts = { skip = true }, },
+        { filter = { event = "msg_show", kind = "search_count" }, opts = { skip = true } },
         -- Hide written message
-        { filter = { event = "msg_show", kind = "", }, opts = { skip = true }, },
+        { filter = { event = "msg_show", kind = "" }, opts = { skip = true } },
       },
-    }
+    },
   },
 
   {
@@ -230,5 +229,4 @@ return {
       { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "[Which-key] Buffer Local Keymaps", },
     },
   },
-
 }

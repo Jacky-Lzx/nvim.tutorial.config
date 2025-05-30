@@ -1,6 +1,6 @@
 return {
   {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
     dependencies = {
       -- 'rafamadriz/friendly-snippets'
@@ -11,7 +11,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = '1.*',
+    version = "1.*",
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -32,6 +32,7 @@ return {
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
+      -- stylua: ignore
       keymap = {
         -- If the command/function returns false or nil, the next command/function will be run.
         preset = "none",
@@ -58,7 +59,7 @@ return {
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'normal'
+        nerd_font_variant = "normal",
       },
 
       -- Default list of enabled providers defined so that you can extend it
@@ -256,6 +257,7 @@ return {
             auto_show = true,
           },
         },
+        -- stylua: ignore
         keymap = {
           preset = "none",
           ["<A-j>"] = { function(cmp) return cmp.select_next({ auto_insert = false }) end, "fallback", },
@@ -269,6 +271,6 @@ return {
       },
     },
 
-    opts_extend = { "sources.default" }
-  }
+    opts_extend = { "sources.default" },
+  },
 }

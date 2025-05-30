@@ -6,6 +6,7 @@ return {
     opts = {
       transparent_background = true,
       custom_highlights = function(colors)
+        -- stylua: ignore
         return {
           LineNr     = { fg = colors.surface2 },
           Visual     = { bg = colors.overlay0 },
@@ -29,12 +30,12 @@ return {
         },
         which_key = true,
         flash = true,
-      }
+      },
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
 
       vim.cmd.colorscheme("catppuccin")
-    end
+    end,
   },
 }

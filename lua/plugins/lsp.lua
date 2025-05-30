@@ -25,8 +25,8 @@ return {
     end,
   },
   {
-    'neovim/nvim-lspconfig',
-    dependencies = { 'saghen/blink.cmp', "williamboman/mason.nvim" },
+    "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp", "williamboman/mason.nvim" },
 
     -- example calling setup directly for each LSP
     config = function()
@@ -41,10 +41,10 @@ return {
         },
       })
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local lspconfig = require("lspconfig")
 
-      lspconfig['lua_ls'].setup({ capabilities = capabilities })
+      lspconfig["lua_ls"].setup({ capabilities = capabilities })
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
@@ -70,8 +70,7 @@ return {
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "[LSP] Rename" })
         end,
       })
-
-    end
+    end,
   },
   {
     "folke/lazydev.nvim",

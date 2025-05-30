@@ -20,10 +20,10 @@ return {
       indent = {
         enabled = true,
         animate = {
-          enabled = false
+          enabled = false,
         },
         indent = {
-          only_scope = true
+          only_scope = true,
         },
         scope = {
           enabled = true, -- enable highlighting the current scope
@@ -57,7 +57,7 @@ return {
         },
         sources = {
           spelling = {
-            layout = { preset = "select" }
+            layout = { preset = "select" },
           },
         },
         win = {
@@ -108,6 +108,7 @@ return {
       },
     },
 
+    -- stylua: ignore
     keys = {
       { "<A-w>", function() require("snacks").bufdelete() end, desc = "[Snacks] Delete buffer" },
       { "<leader>si", function() require("snacks").image.hover() end, desc = "[Snacks] Display image" },
@@ -174,20 +175,21 @@ return {
     },
 
     init = function()
-        local Snacks = require("snacks")
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "VeryLazy",
-          callback = function()
-            -- Setup some globals for debugging (lazy-loaded)
-            _G.dd = function(...)
-              Snacks.debug.inspect(...)
-            end
-            _G.bt = function()
-              Snacks.debug.backtrace()
-            end
-            vim.print = _G.dd -- Override print to use snacks for `:=` command
+      local Snacks = require("snacks")
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        callback = function()
+          -- Setup some globals for debugging (lazy-loaded)
+          _G.dd = function(...)
+            Snacks.debug.inspect(...)
+          end
+          _G.bt = function()
+            Snacks.debug.backtrace()
+          end
+          vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-            Snacks.toggle.new({
+          Snacks.toggle
+            .new({
               id = "Animation",
               name = "Animation",
               get = function()
@@ -195,10 +197,12 @@ return {
               end,
               set = function(state)
                 vim.g.snacks_animate = state
-              end
-            }):map("<leader>ta")
+              end,
+            })
+            :map("<leader>ta")
 
-            Snacks.toggle.new({
+          Snacks.toggle
+            .new({
               id = "scroll_anima",
               name = "Scroll animation",
               get = function()
@@ -211,35 +215,38 @@ return {
                   Snacks.scroll.disable()
                 end
               end,
-            }):map("<leader>tS")
+            })
+            :map("<leader>tS")
 
-            -- Create some toggle mappings
-            Snacks.toggle.dim():map("<leader>tD")
+          -- Create some toggle mappings
+          Snacks.toggle.dim():map("<leader>tD")
 
-            Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>ts")
-            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>tw")
-            Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>tL")
-            Snacks.toggle.diagnostics():map("<leader>td")
-            Snacks.toggle.line_number():map("<leader>tl")
-            Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>tc")
-            Snacks.toggle.treesitter():map("<leader>tT")
-            Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>tb")
-            Snacks.toggle.inlay_hints():map("<leader>th")
-            Snacks.toggle.indent():map("<leader>tg")
-            Snacks.toggle.dim():map("<leader>tD")
-            -- Toggle the profiler
-            Snacks.toggle.profiler():map("<leader>tpp")
-            -- Toggle the profiler highlights
-            Snacks.toggle.profiler_highlights():map("<leader>tph")
+          Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>ts")
+          Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>tw")
+          Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>tL")
+          Snacks.toggle.diagnostics():map("<leader>td")
+          Snacks.toggle.line_number():map("<leader>tl")
+          Snacks.toggle
+            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+            :map("<leader>tc")
+          Snacks.toggle.treesitter():map("<leader>tT")
+          Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>tb")
+          Snacks.toggle.inlay_hints():map("<leader>th")
+          Snacks.toggle.indent():map("<leader>tg")
+          Snacks.toggle.dim():map("<leader>tD")
+          -- Toggle the profiler
+          Snacks.toggle.profiler():map("<leader>tpp")
+          -- Toggle the profiler highlights
+          Snacks.toggle.profiler_highlights():map("<leader>tph")
 
-            vim.keymap.del("n", "grn")
-            vim.keymap.del("n", "gra")
-            vim.keymap.del("n", "grr")
-            vim.keymap.del("n", "gri")
+          vim.keymap.del("n", "grn")
+          vim.keymap.del("n", "gra")
+          vim.keymap.del("n", "grr")
+          vim.keymap.del("n", "gri")
 
-            vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { bg = "#313244" })
-          end,
-        })
-      end,
-  }
+          vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { bg = "#313244" })
+        end,
+      })
+    end,
+  },
 }
