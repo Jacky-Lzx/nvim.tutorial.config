@@ -95,12 +95,28 @@ return {
         ["_"] = { "trim_whitespace" },
       },
 
-      format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
-        lsp_format = "fallback",
-      },
+      format_on_save = function(_)
+        -- Disable with a global or buffer-local variable
+        if vim.g.enable_autoformat then
+          return { timeout_ms = 500, lsp_format = "fallback" }
+        end
+      end,
     },
+    init = function()
+      vim.g.enable_autoformat = true
+      require("snacks").toggle
+        .new({
+          id = "auto_format",
+          name = "Auto format",
+          get = function()
+            return vim.g.enable_autoformat
+          end,
+          set = function(state)
+            vim.g.enable_autoformat = state
+          end,
+        })
+        :map("<leader>tf")
+    end,
   },
 
   {
