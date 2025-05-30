@@ -17,6 +17,8 @@ vim.opt.startofline = false
 
 vim.opt.conceallevel = 2
 
+vim.o.signcolumn = "yes:1"
+
 vim.wo.wrap = false
 
 -- Tab related options
