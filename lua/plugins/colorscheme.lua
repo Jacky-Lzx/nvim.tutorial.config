@@ -30,6 +30,7 @@ return {
         },
         which_key = true,
         flash = true,
+        lsp_trouble = true,
       },
     },
     config = function(_, opts)
