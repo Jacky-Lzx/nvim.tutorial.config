@@ -37,3 +37,10 @@
 ### Chapter 5
 
 无
+
+### Chapter 6
+
+- `Mason`中安装
+  - `stylua`
+  - `codespell`
+
