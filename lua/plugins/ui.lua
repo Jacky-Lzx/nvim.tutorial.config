@@ -250,4 +250,12 @@ return {
       require("colorizer").setup()
     end,
   },
+
+  {
+    "nvzone/showkeys",
+    cmd = "ShowkeysToggle",
+    opts = {
+      maxkeys = 5,
+    },
+  },
 }
