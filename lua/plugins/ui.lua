@@ -238,4 +238,9 @@ return {
     "petertriho/nvim-scrollbar",
     opts = {},
   },
+
+  {
+    "kevinhwang91/nvim-hlslens",
+    opts = {},
+  },
 }
