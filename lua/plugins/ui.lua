@@ -243,4 +243,11 @@ return {
     "kevinhwang91/nvim-hlslens",
     opts = {},
   },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function(_, _)
+      require("colorizer").setup()
+    end,
+  },
 }
