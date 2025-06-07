@@ -11,9 +11,9 @@ return {
           LineNr     = { fg = colors.surface2 },
           Visual     = { bg = colors.overlay0 },
           Search     = { bg = colors.surface2 },
-          IncSearch  = { bg = colors.lavender },
-          CurSearch  = { bg = colors.lavender },
-          MatchParen = { bg = colors.lavender, fg = colors.base, bold = true },
+          IncSearch  = { bg = colors.mauve },
+          CurSearch  = { bg = colors.mauve },
+          MatchParen = { bg = colors.mauve, fg = colors.base, bold = true },
         }
       end,
       integrations = {

@@ -364,7 +364,22 @@ return {
 
   {
     "kevinhwang91/nvim-hlslens",
-    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "n",  "nzz<Cmd>lua require('hlslens').start()<CR>", mode = "n", desc = "Next match",      noremap = true, silent = true },
+      { "N",  "Nzz<Cmd>lua require('hlslens').start()<CR>", mode = "n", desc = "Previous match",  noremap = true, silent = true },
+      { "*",  "*<Cmd>lua require('hlslens').start()<CR>",   mode = "n", desc = "Next match",      noremap = true, silent = true },
+      { "#",  "#<Cmd>lua require('hlslens').start()<CR>",   mode = "n", desc = "Previous match",  noremap = true, silent = true },
+      { "g*", "g*<Cmd>lua require('hlslens').start()<CR>",  mode = "n", desc = "Next match",      noremap = true, silent = true },
+      { "g#", "g#<Cmd>lua require('hlslens').start()<CR>",  mode = "n", desc = "Previous match",  noremap = true, silent = true },
+      { "//", "<Cmd>noh<CR>",                               mode = "n", desc = "Clear highlight", noremap = true, silent = true },
+
+      { "/" },
+      { "?" },
+    },
+    opts = {
+      nearest_only = true,
+    },
     config = function(_, opts)
       -- require('hlslens').setup() is not required
       require("scrollbar.handlers.search").setup(opts)
