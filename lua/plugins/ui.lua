@@ -233,4 +233,9 @@ return {
     version = "*",
     opts = {},
   },
+
+  {
+    "petertriho/nvim-scrollbar",
+    opts = {},
+  },
 }
