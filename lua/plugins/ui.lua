@@ -171,6 +171,7 @@ return {
         enabled = false,
       },
       lsp = {
+
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
@@ -228,5 +229,9 @@ return {
       -- stylua: ignore
       { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "[Which-key] Buffer Local Keymaps", },
     },
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
   },
 }
