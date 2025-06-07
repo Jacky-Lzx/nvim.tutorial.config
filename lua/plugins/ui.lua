@@ -310,6 +310,10 @@ return {
           :map("<leader>tgw")
       end,
     },
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+      require("scrollbar.handlers.gitsigns").setup()
+    end,
   },
 
   {
@@ -342,12 +346,31 @@ return {
 
   {
     "petertriho/nvim-scrollbar",
-    opts = {},
+    opts = {
+      handelers = {
+        gitsigns = true, -- Requires gitsigns
+        search = true, -- Requires hlslens
+      },
+      marks = {
+        Search = {
+          color = "#CBA6F7",
+        },
+        GitAdd = { text = "┃" },
+        GitChange = { text = "┃" },
+        GitDelete = { text = "_" },
+      },
+    },
   },
 
   {
     "kevinhwang91/nvim-hlslens",
     opts = {},
+    config = function(_, opts)
+      -- require('hlslens').setup() is not required
+      require("scrollbar.handlers.search").setup(opts)
+      vim.api.nvim_set_hl(0, "HlSearchLens", { link = "CurSearch" })
+      vim.api.nvim_set_hl(0, "HlSearchLensNear", { fg = "#CBA6F7" })
+    end,
   },
 
   {
