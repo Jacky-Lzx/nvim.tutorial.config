@@ -279,4 +279,34 @@ return {
     event = "LspAttach",
     opts = {},
   },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    opts = {
+      provider_selector = function(_, _, _)
+        return { "treesitter", "indent" }
+      end,
+    },
+
+    init = function()
+      vim.o.foldenable = true
+      vim.o.foldcolumn = "0" -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.opt.fillchars = {
+        fold = " ",
+        foldopen = "▾",
+        foldsep = "│",
+        foldclose = "▸",
+      }
+    end,
+
+    config = function(_, opts)
+      require("ufo").setup(opts)
+
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+    end,
+  },
 }
