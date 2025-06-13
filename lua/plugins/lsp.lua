@@ -6,6 +6,7 @@ return {
         "lua-language-server",
       },
     },
+    opts_extend = { "ensure_installed" },
     config = function(_, opts)
       require("mason").setup(opts)
       local mr = require("mason-registry")
@@ -121,6 +122,18 @@ return {
 
   {
     "mfussenegger/nvim-lint",
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        optional = true,
+        opts = {
+          ensure_installed = {
+            "codespell",
+          },
+        },
+        opts_extend = { "ensure_installed" },
+      },
+    },
     event = "BufWritePost",
     config = function()
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
