@@ -2,14 +2,13 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = {
-        "lua-language-server",
-      },
+      ensure_installed = {},
     },
     opts_extend = { "ensure_installed" },
     config = function(_, opts)
       require("mason").setup(opts)
       local mr = require("mason-registry")
+
       local function ensure_installed()
         for _, tool in ipairs(opts.ensure_installed) do
           local p = mr.get_package(tool)
@@ -42,11 +41,6 @@ return {
         },
       })
 
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
-
-      lspconfig["lua_ls"].setup({ capabilities = capabilities })
-
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -73,26 +67,13 @@ return {
       })
     end,
   },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
 
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     opts = {
       formatters_by_ft = {
-        lua = { "stylua" },
-        -- Use the "_" filetype to run formatters on filetypes that don't
-        -- have other formatters configured.
+        -- Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
         ["_"] = { "trim_whitespace" },
       },
 
