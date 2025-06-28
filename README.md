@@ -44,3 +44,6 @@
   - `stylua`
   - `codespell`
 
+### Chapter 7
+
+无
